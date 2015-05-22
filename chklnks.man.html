@@ -1,0 +1,170 @@
+
+<p><a href="#heading1">NAME</a><br/>
+<a href="#heading2">SYNOPSIS</a><br/>
+<a href="#heading3">AVAILABILITY</a><br/>
+<a href="#heading4">DESCRIPTION</a><br/>
+<a href="#heading5">OPTIONS</a><br/>
+<a href="#heading6">EXAMPLES</a><br/>
+<a href="#heading7">FILES</a><br/>
+<a href="#heading8">BUGS</a><br/>
+<a href="#heading9">SEE ALSO</a><br/>
+<a href="#heading10">AUTHOR</a><br/>
+
+</p>
+<hr/>
+
+
+<h2 id="heading1">NAME
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=chklnks">chklnks</a></b>
+- locates and optionally removes broken symbolic links.</p>
+
+<h2 id="heading2">SYNOPSIS
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b><a href="./scripts.php?script=chklnks">chklnks</a></b>
+[<b>-d</b>] [<b>-r</b>] [<b>-v</b>]
+<i>&lt;directory&gt;</i></p>
+
+<h2 id="heading3">AVAILABILITY
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b><a href="./scripts.php?script=chklnks">chklnks</a></b></i>
+is a Bourne shell script which should work equally well on
+all versions of UNIX and Linux.</p>
+
+<h2 id="heading4">DESCRIPTION
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The script
+<b><a href="./scripts.php?script=chklnks">chklnks</a></b>, runs &quot;<b>find</b>&quot; to locate files
+which are symbolic links and determines whether the target
+file exists with &quot;<b>test</b>&quot;.</p>
+
+<p style="margin-left:11%; margin-top: 1em">By default the
+path and file name of any broken link found is echoed to to
+&quot;<i>standard out</i>&quot;.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The script is
+mostly usefully invoked by &quot;<i>cron</i>&quot; to a
+regular weekly schedule.</p>
+
+<h2 id="heading5">OPTIONS
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<colgroup><col width="11%"></col>
+<col width="3%"></col>
+<col width="4%" class="center"></col>
+<col width="82%"></col>
+</colgroup>
+<tr valign="top" align="left">
+<td></td>
+<td>
+
+
+<p style="margin-top: 1em"><b>-d</b></p></td>
+<td></td>
+<td>
+
+
+<p style="margin-top: 1em">Set the script to debug
+mode.</p> </td></tr>
+<tr valign="top" align="left">
+<td></td>
+<td>
+
+
+<p><b>-r</b></p></td>
+<td></td>
+<td>
+
+
+<p>Broken symbolic links are removed.</p></td></tr>
+<tr valign="top" align="left">
+<td></td>
+<td>
+
+
+<p><b>-v</b></p></td>
+<td></td>
+<td>
+
+
+<p>Set the operation mode of the script to <i>verbose</i>.
+In <i>verbose mode</i> <b><a href="./scripts.php?script=chklnks">chklnks</a></b> will report any broken
+symbolic links which have been removed to <i>standard
+out</i>.</p> </td></tr>
+</table>
+
+<p style="margin-left:11%;"><i>&lt;directory&gt;</i></p>
+
+<p style="margin-left:18%;">If given on the command line
+<i>&lt;directory&gt;</i> is the starting point for the
+<b>find</b>.</p>
+
+<p style="margin-left:11%; margin-top: 1em">By default the
+starting point is the /fIcurrent directiory.</p>
+
+<h2 id="heading6">EXAMPLES
+</h2>
+
+<pre style="margin-left:11%; margin-top: 1em"><a href="./scripts.php?script=chklnks">chklnks</a></pre>
+
+<p style="margin-left:11%; margin-top: 1em">From the
+current directory search recursively for broken symbolic
+links and report any found to /fIstandard out/fR.</p>
+
+<pre style="margin-left:11%; margin-top: 1em"><a href="./scripts.php?script=chklnks">chklnks</a> -v -r /src/merlin/usr/local/web</pre>
+
+
+<p style="margin-left:11%; margin-top: 1em">Starting from
+<i>/src/merlin/usr/local/web</i> do a recursive search for
+broken symbolic links and remove them. Report each file
+deleted to standard out.</p>
+
+<h2 id="heading7">FILES
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>/usr/local/etc/<a href="./scripts.php?script=chklnks.cf">chklnks.cf</a></i>.</p>
+
+<h2 id="heading8">BUGS
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The script has
+no input error checking. I&rsquo;m a bit worried about what
+happens if filenames with white space in them are found.
+These names will be passed to <b>rm</b> as multiple file
+names which could potentially match real files!</p>
+
+<h2 id="heading9">SEE ALSO
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><a href="./scripts.php?script=chkdf&amp;man=y">chkdf</a>,
+<a href="./scripts.php?script=chkftpd&amp;man=y">chkftpd</a>, <a href="./scripts.php?script=chkfw&amp;man=y">chkfw</a>, <a href="./scripts.php?script=clean&amp;man=y">clean</a>.</p>
+
+<h2 id="heading10">AUTHOR
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Clifford W
+Fulford of <a href="http://www.citylinux.com"
+title="Go to the City Linux homepage">
+City Linux
+</a>. <br/>
+Offering systems management and support for Linux, Windows
+and Apple environments. Contact <a href="mailto:fulford@fulford.net" title="Send mail to Clifford W Fulford">fulford@fulford.net</a> or +44
+(0)709 229 5385.</p>
+<hr/>

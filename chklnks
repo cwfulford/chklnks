@@ -1,0 +1,35 @@
+#!/bin/bash
+# $Id: chklnks,v 1.7 2014/06/05 09:10:12 fulford Exp $
+# $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
+# $Revision: 1.7 $
+# Author C W Fulford.
+# Copyright 2014 (c) C W Fulford.
+# Licensed for public use under the LGPL, .
+# For assistance contact fulford@fulford.net 0709 229 5385
+########################################################################
+cmd=`basename $0`
+syntax="$cmd [-d] [-v]"
+while [ $# -gt 0 ] ;do
+	case $1 in 
+		-d) set -x;debug=:;shift;;
+		-r) action=rm;shift;;
+		-v) verbose=0;shift;;
+		 *) path=$1;shift;;
+	esac
+done
+action=${action:-"echo"}
+path=${path:-"./"}
+sudo find $path -type l |
+while read f;do 
+	sudo [ -e "$f" ] ||{
+		if $action "$f" 2>/dev/null;then 
+			[ $action = "rm" ] && {
+				[ $verbose ] && echo "$cmd: $f removed"
+			}
+		else
+			[ $action = "rm" ] && {
+				echo "$cmd: can't delete $f" >&2
+			}
+		fi
+	}
+done

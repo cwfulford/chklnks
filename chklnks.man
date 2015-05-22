@@ -1,0 +1,84 @@
+.TH CHKLNKS 8l "28 May r
+.SH NAME
+.B chklnks
+- locates and optionally removes broken symbolic links.
+.SH SYNOPSIS
+\fBchklnks\fR [\fB-d\fR] [\fB-r\fR] [\fB-v\fR] \fI<directory>\fR
+.SH AVAILABILITY
+.B chklnks
+is a Bourne shell script which should work equally well on all versions of UNIX
+and Linux.
+.SH DESCRIPTION
+The script
+.BR chklnks ,
+runs "\fBfind\fR"
+to locate files which are symbolic links and determines whether the
+target file exists with "\fBtest\fR".
+.LP
+By default the path and file name of any broken link found is echoed to
+to "\fIstandard out\fR".
+.LP
+The script is mostly usefully invoked by 
+"\fIcron\fR" to a regular weekly schedule. 
+.SH OPTIONS
+.TP 5
+\fB-d\fR
+Set the script to debug mode.
+.TP 5
+.B -r
+Broken symbolic links are removed.
+.TP 5
+.B -v
+Set the operation mode of the script to 
+.IR verbose .
+In
+.I verbose mode
+.B chklnks
+will report any broken symbolic links which have been removed to 
+\fIstandard out\fR. 
+.TP 5
+.I <directory>
+If given on the command line
+.I <directory>
+is the starting point for the
+.BR find .
+.LP
+By default the starting point is the 
+/fIcurrent directiory\fR.
+
+.SH EXAMPLES
+.nf
+.ft CW
+chklnks 
+.fi
+.ft R
+.LP
+From the current directory search recursively for broken symbolic links
+and report any found to
+/fIstandard out/fR.
+.LP
+.nf
+.ft CW
+chklnks -v -r /src/merlin/usr/local/web 
+.fi
+.ft R
+.LP
+Starting from 
+\fI/src/merlin/usr/local/web\fR do a recursive search for broken symbolic
+links and remove them. Report each file deleted to standard out.
+.SH FILES
+.IR /usr/local/etc/chklnks.cf .
+.SH BUGS
+The script has no input error checking. I'm a bit worried about what happens
+if filenames with white space in them are found. These names will be passed
+to \fBrm\fR as multiple file names which could potentially match real files!
+.SH SEE ALSO
+.IR chkdf ,
+.IR chkftpd ,
+.IR chkfw ,
+.IR clean .
+.SH AUTHOR
+Clifford W Fulford of City Linux.
+.br
+Offering systems management and support for
+Linux, Windows and Apple environments. Contact fulford@fulford.net or +44 (0)709 229 5385.
