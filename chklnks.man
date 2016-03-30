@@ -23,7 +23,7 @@ The script is mostly usefully invoked by
 .SH OPTIONS
 .TP 5
 \fB-d\fR
-Set the script to debug mode.
+\tSet the script to debug mode.
 .TP 5
 .B -r
 Broken symbolic links are removed.
@@ -44,7 +44,7 @@ is the starting point for the
 .BR find .
 .LP
 By default the starting point is the 
-/fIcurrent directiory\fR.
+\fIcurrent directiory\fR.
 
 .SH EXAMPLES
 .nf
