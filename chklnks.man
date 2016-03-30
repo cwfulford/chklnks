@@ -23,7 +23,7 @@ The script is mostly usefully invoked by
 .SH OPTIONS
 .TP 5
 \fB-d\fR
-\tSet the script to debug mode.
+Set the script to debug mode.
 .TP 5
 .B -r
 Broken symbolic links are removed.
