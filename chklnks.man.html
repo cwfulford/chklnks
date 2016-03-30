@@ -5,7 +5,17 @@
 </p>
 <h2 id="heading2">SYNOPSIS</h2>
 <p class="indent">
-<b>chklnks</b> [<b>-d</b>] [<b>-r</b>] [<b>-v</b>] <i>&lt;directory&gt;</i>
+
+<b>chklnks</b>
+ [
+<b>-d</b>
+] [
+<b>-r</b>
+] [
+<b>-v</b>
+] 
+<i>&lt;directory&gt;</i>
+
 </p>
 <h2 id="heading3">AVAILABILITY</h2>
 <p class="indent">
@@ -16,24 +26,34 @@ and Linux.
 <h2 id="heading4">DESCRIPTION</h2>
 <p class="indent">
 The script
-.BR chklnks ,
-runs "<b>find</b>"
+<b>chklnks,</b>
+runs "
+<b>find</b>
+"
 to locate files which are symbolic links and determines whether the
-target file exists with "<b>test</b>".
+target file exists with "
+<b>test</b>
+".
 </p>
 <p class="indent">
 By default the path and file name of any broken link found is echoed to
-to "<i>standard out</i>".
+to "
+<i>standard out</i>
+".
 </p>
 <p class="indent">
 The script is mostly usefully invoked by 
-"<i>cron</i>" to a regular weekly schedule. 
+"
+<i>cron</i>
+" to a regular weekly schedule. 
 </p>
 <h2 id="heading5">OPTIONS</h2>
 <p class="indent">
 </p>
 <p class="indent">
+
 <b>-d</b>
+
 Set the script to debug mode.
 </p>
 <p class="indent">
@@ -48,28 +68,30 @@ In
 <i>verbose mode</i>
 <b>chklnks</b>
 will report any broken symbolic links which have been removed to 
-<i>standard out</i>. 
+
+<i>standard out</i>
+. 
 </p>
 <p class="indent">
 <i>&lt;directory&gt;</i>
 If given on the command line
 <i>&lt;directory&gt;</i>
 is the starting point for the
-.BR find .
+<b>find.</b>
 </p>
 <p class="indent">
 By default the starting point is the 
-/fIcurrent directiory\fR.
+/fIcurrent directiory
+.
 
 </p>
 <h2 id="heading6">EXAMPLES</h2>
 <p class="indent">
-.nf
-<pre>
+<p class="cmdline">
+
 chklnks 
-.fi
-</pre>
-</div>
+</p>
+<p class="indent">
 </p>
 <p class="indent">
 From the current directory search recursively for broken symbolic links
@@ -77,16 +99,17 @@ and report any found to
 /fIstandard out/fR.
 </p>
 <p class="indent">
-.nf
-<pre>
+<p class="cmdline">
+
 chklnks -v -r /src/merlin/usr/local/web 
-.fi
-</pre>
-</div>
+</p>
+<p class="indent">
 </p>
 <p class="indent">
 Starting from 
-<i>/src/merlin/usr/local/web</i> do a recursive search for broken symbolic
+
+<i>/src/merlin/usr/local/web</i>
+ do a recursive search for broken symbolic
 links and remove them. Report each file deleted to standard out.
 </p>
 <h2 id="heading7">FILES</h2>
@@ -97,7 +120,9 @@ links and remove them. Report each file deleted to standard out.
 <p class="indent">
 The script has no input error checking. I'm a bit worried about what happens
 if filenames with white space in them are found. These names will be passed
-to <b>rm</b> as multiple file names which could potentially match real files!
+to 
+<b>rm</b>
+ as multiple file names which could potentially match real files!
 </p>
 <h2 id="heading9">SEE ALSO</h2>
 <p class="indent">
@@ -109,6 +134,6 @@ to <b>rm</b> as multiple file names which could potentially match real files!
 <h2 id="heading10">AUTHOR</h2>
 <p class="indent">
 Clifford W Fulford of City Linux.
-.br
+<br/>
 Offering systems management and support for
 Linux, Windows and Apple environments. Contact fulford@fulford.net or +44 (0)709 229 5385.
