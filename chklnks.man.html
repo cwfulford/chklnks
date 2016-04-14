@@ -12,10 +12,12 @@
 ] [
 <b>-r</b>
 ] [
+<b>-V</b>
+] [
 <b>-v</b>
-] 
-<i>&lt;directory&gt;</i>
-
+] [
+<i>&lt;directory&gt; ...</i>
+]
 </p>
 <h2 id="heading3">AVAILABILITY</h2>
 <p class="indent">
@@ -30,13 +32,10 @@ The script
 runs "
 <b>find</b>
 "
-to locate files which are symbolic links and determines whether the
-target file exists with "
-<b>test</b>
-".
+to locate files which are symbolic links where the target file is missing
 </p>
 <p class="indent">
-By default the path and file name of any broken link found is echoed to
+By default the path and file name of any broken link found are echoed to
 to "
 <i>standard out</i>
 ".
@@ -67,7 +66,7 @@ Set the operation mode of the script to
 In
 <i>verbose mode</i>
 <b><a href="./scripts.php?script=chklnks">chklnks</a></b>
-will report any broken symbolic links which have been removed to 
+will report any broken symbolic links and their removal to
 
 <i>standard out</i>
 . 
@@ -78,13 +77,13 @@ If given on the command line
 <i>&lt;directory&gt;</i>
 is the starting point for the
 <b>find.</b>
+Multiple space separated directories may be listed on the command line.
 </p>
 <p class="indent">
-By default the starting point is the 
-
-<i>current directiory</i>
-.
-
+If no 
+<i>&lt;directory&gt;</i>
+ is nominated on the command line the current directory
+is is used as the starting point.
 </p>
 <h2 id="heading6">EXAMPLES</h2>
 <p class="indent">

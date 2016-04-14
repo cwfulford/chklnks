@@ -3,7 +3,7 @@
 .B chklnks
 - locates and optionally removes broken symbolic links.
 .SH SYNOPSIS
-\fBchklnks\fR [\fB-d\fR] [\fB-r\fR] [\fB-v\fR] \fI<directory>\fR
+\fBchklnks\fR [\fB-d\fR] [\fB-r\fR] [\fB-V\fR] [\fB-v\fR] [\fI<directory> ...\fR]
 .SH AVAILABILITY
 .B chklnks
 is a Bourne shell script which should work equally well on all versions of UNIX
@@ -12,10 +12,9 @@ and Linux.
 The script
 .BR chklnks ,
 runs "\fBfind\fR"
-to locate files which are symbolic links and determines whether the
-target file exists with "\fBtest\fR".
+to locate files which are symbolic links where the target file is missing
 .LP
-By default the path and file name of any broken link found is echoed to
+By default the path and file name of any broken link found are echoed to
 to "\fIstandard out\fR".
 .LP
 The script is mostly usefully invoked by 
@@ -34,7 +33,7 @@ Set the operation mode of the script to
 In
 .I verbose mode
 .B chklnks
-will report any broken symbolic links which have been removed to 
+will report any broken symbolic links and their removal to
 \fIstandard out\fR. 
 .TP 5
 .I <directory>
@@ -42,10 +41,10 @@ If given on the command line
 .I <directory>
 is the starting point for the
 .BR find .
+Multiple space separated directories may be listed on the command line.
 .LP
-By default the starting point is the 
-\fIcurrent directiory\fR.
-
+If no \fI<directory>\fR is nominated on the command line the current directory
+is is used as the starting point.
 .SH EXAMPLES
 .nf
 .ft CW
