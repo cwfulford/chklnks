@@ -42,7 +42,7 @@ If given on the command line
 is the starting point for the
 .BR find .
 Multiple space separated directories may be listed on the command line.
-.LP
+.IP
 If no \fI<directory>\fR is nominated on the command line the current directory
 is is used as the starting point.
 .SH EXAMPLES
