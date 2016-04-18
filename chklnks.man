@@ -3,7 +3,7 @@
 .B chklnks
 - locates and optionally removes broken symbolic links.
 .SH SYNOPSIS
-\fBchklnks\fR [\fB-a\fR] [\fB-d\fR] [\fB-r\fR] [\fB-V\fR] [\fB-v\fR] [\fI<directory> ...\fR]
+\fBchklnks\fR [\fB-a\fR] [\fB-d\fR] [\fB-h \fI<hostid\fR] [\fB-r\fR] [\fB-V\fR] [\fB-v\fR] [\fI<directory> ...\fR]
 .SH AVAILABILITY
 .B chklnks
 is a Bourne shell script which should work equally well on all versions of UNIX
@@ -26,6 +26,10 @@ Check all the local read write filesystems on the target host
 .TP 5
 \fB-d\fR
 Set the script to debug mode.
+.TP 5
+\fB-h \fI<hostname>\fR
+.br
+Run the script on a remote host.
 .TP 5
 .B -r
 Broken symbolic links are removed.
