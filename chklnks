@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: chklnks,v 1.68 2016/04/18 18:05:24 fulford Exp fulford $
+# $Id: chklnks,v 1.69 2016/04/18 18:24:07 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
-# $Revision: 1.68 $
+# $Revision: 1.69 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -16,31 +16,31 @@ while [ $# -gt 0 ] ;do
 		-h) hostid=$2;shift 2;;
 		-r) action=delete;shift;;
 		-v) verbose=0;shift;;
-		-V) echo "$cmd $Revision: 1.68 $ $Date: 2016/04/18 18:05:24 $"|awk '{print $1,$3,$6}';exit;;  
+		-V) echo "$cmd $Revision: 1.69 $ $Date: 2016/04/18 18:24:07 $"|awk '{print $1,$3,$6}';exit;;  
 		 /*) path="$path $1";shift;;
 	esac
 done
 action=${action:-"echo"}
 all=${all:=0}
+tdf=/tmp/df-$$
 tmounts=/tmp/mounts-$$
 verbose=${verbose:-1}
 if [ "$hostid" ]; then
 	if nc -zw 2 $hostid 22 ;then
 		rchk="ssh $hostid"
 		ssh $hostid cat /proc/mounts > $tmounts	
+		ssh $hostid df -l > $tdf	
 	else	
 		echo "$cmd: ssh not available on $hostid" >&2
 		exit 1
 	fi
 else
 	cp /proc/mounts $tmounts
+	df -l >$tdf
 fi
 		
 if [ $all -eq 1 ];then
-	#path=`
-	$rchk df -l|
-		awk 'BEGIN{
-			while ( getline < '$tmounts' ){
+	path=`awk '{ while (NR == FNR){
 				# get mount options
 				split($4,r,",")
 				mpt[$2] = r[1] 
@@ -58,8 +58,8 @@ if [ $all -eq 1 ];then
 				print(i,"=",fss[i])
 				#}
 			}
-		}'
-#	`
+		}' $tmounts $tdf
+	`
 fi
 path=${path:-"./"}
 [ "$verbose" ] &&{
