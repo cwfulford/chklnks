@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: chklnks,v 1.36 2016/04/18 15:51:16 fulford Exp fulford $
+# $Id: chklnks,v 1.37 2016/04/18 16:09:09 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
-# $Revision: 1.36 $
+# $Revision: 1.37 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -16,7 +16,7 @@ while [ $# -gt 0 ] ;do
 		-h) hostid=$2;shift 2;;
 		-r) action=delete;shift;;
 		-v) verbose=0;shift;;
-		-V) echo "$cmd $Revision: 1.36 $ $Date: 2016/04/18 15:51:16 $"|awk '{print $1,$3,$6}';exit;;  
+		-V) echo "$cmd $Revision: 1.37 $ $Date: 2016/04/18 16:09:09 $"|awk '{print $1,$3,$6}';exit;;  
 		 /*) path="$path $1";shift;;
 	esac
 done
@@ -42,9 +42,6 @@ if [ $all -eq 1 ];then
 				# get mount options
 				split($4,r,",")
 				m[$2] = r[1] 
-			}
-			for (i in m){
-				print i
 			}
 			for (fs in fss){
 				# use mount point as index into arrays 
