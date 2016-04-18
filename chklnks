@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: chklnks,v 1.29 2016/04/18 14:24:06 fulford Exp fulford $
+# $Id: chklnks,v 1.30 2016/04/18 15:27:31 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
-# $Revision: 1.29 $
+# $Revision: 1.30 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -16,7 +16,7 @@ while [ $# -gt 0 ] ;do
 		-h) hostid=$2;shift 2;;
 		-r) action=delete;shift;;
 		-v) verbose=0;shift;;
-		-V) echo "$cmd $Revision: 1.29 $ $Date: 2016/04/18 14:24:06 $"|awk '{print $1,$3,$6}';exit;;  
+		-V) echo "$cmd $Revision: 1.30 $ $Date: 2016/04/18 15:27:31 $"|awk '{print $1,$3,$6}';exit;;  
 		 /*) path="$path $1";shift;;
 	esac
 done
@@ -37,8 +37,7 @@ if [ $all -eq 1 ];then
 			# Put local file systems mount points in array
 			fss[NR]=$6
 		}END{
-			cmd="'$rchk' cat /proc/mounts"
-			while ( cmd | getline ){
+			while ( getline "/proc/mounts" ){
 				# get mount options
 				split($4,r,",")
 				m[$2] = r[1] 
