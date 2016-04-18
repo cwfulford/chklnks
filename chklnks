@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: chklnks,v 1.63 2016/04/18 17:36:09 fulford Exp fulford $
+# $Id: chklnks,v 1.64 2016/04/18 17:47:10 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
-# $Revision: 1.63 $
+# $Revision: 1.64 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -16,27 +16,31 @@ while [ $# -gt 0 ] ;do
 		-h) hostid=$2;shift 2;;
 		-r) action=delete;shift;;
 		-v) verbose=0;shift;;
-		-V) echo "$cmd $Revision: 1.63 $ $Date: 2016/04/18 17:36:09 $"|awk '{print $1,$3,$6}';exit;;  
+		-V) echo "$cmd $Revision: 1.64 $ $Date: 2016/04/18 17:47:10 $"|awk '{print $1,$3,$6}';exit;;  
 		 /*) path="$path $1";shift;;
 	esac
 done
 action=${action:-"echo"}
 all=${all:=0}
+tmounts=/tmp/mounts-$$
 verbose=${verbose:-1}
 if [ "$hostid" ]; then
 	if nc -zw 2 $hostid 22 ;then
 		rchk="ssh $hostid"
+		scp $hostid:/proc/mounts $tmounts	
 	else	
 		echo "$cmd: ssh not available on $hostid" >&2
 		exit 1
 	fi
+else
+	cp /proc/mounts $tmounts
 fi
 		
 if [ $all -eq 1 ];then
-	#path=`
+	path=`
 	$rchk df -l|
 		awk 'BEGIN{
-			while ( getline < "/proc/mounts" ){
+			while ( getline < '$tmounts' ){
 				# get mount options
 				split($4,r,",")
 				mpt[$2] = r[1] 
