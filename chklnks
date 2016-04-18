@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: chklnks,v 1.18 2016/04/18 13:50:38 fulford Exp fulford $
+# $Id: chklnks,v 1.19 2016/04/18 13:52:55 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
-# $Revision: 1.18 $
+# $Revision: 1.19 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -16,7 +16,7 @@ while [ $# -gt 0 ] ;do
 		-h) hostid= $2;shift 2;;
 		-r) action=delete;shift;;
 		-v) verbose=0;shift;;
-		-V) echo "$cmd $Revision: 1.18 $ $Date: 2016/04/18 13:50:38 $"|awk '{print $1,$3,$6}';exit;;  
+		-V) echo "$cmd $Revision: 1.19 $ $Date: 2016/04/18 13:52:55 $"|awk '{print $1,$3,$6}';exit;;  
 		 /*) path="$path $1";shift;;
 	esac
 done
@@ -25,6 +25,7 @@ all=${all:=0}
 if [ "$hostid" ]; then
 	nc -zw 2 22 $hostid ||{
 		echo "$cmd: ssh not available on $hostid" >&2
+		exit 1
 	}
 else
 	rchk="ssh $hostid"	
