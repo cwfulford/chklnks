@@ -1,4 +1,4 @@
-.TH CHKLNKS 8l "28 May r1.104
+.TH CHKLNKS 8l "28 May r1.105
 .SH NAME
 .B chklnks
 - locates and optionally removes broken symbolic links.
