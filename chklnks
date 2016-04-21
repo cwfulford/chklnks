@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: chklnks,v 1.121 2016/04/21 08:54:36 fulford Exp fulford $
+# $Id: chklnks,v 1.122 2016/04/21 14:27:58 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
-# $Revision: 1.121 $
+# $Revision: 1.122 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -16,7 +16,7 @@ while [ $# -gt 0 ] ;do
 		-h) hostid=$2;shift 2;;
 		-r) action=delete;shift;;
 		-v) verbose=0;shift;;
-		-V) echo "$cmd $Revision: 1.121 $ $Date: 2016/04/21 08:54:36 $"|awk '{print $1,$3,$6}';exit;;  
+		-V) echo "$cmd $Revision: 1.122 $ $Date: 2016/04/21 14:27:58 $"|awk '{print $1,$3,$6}';exit;;  
 		 /*) paths="$paths $1";shift;;
 	 	*) echo "$syntax" >&2;exit;;
 	esac
@@ -44,7 +44,7 @@ fi
 		
 if [ $all -eq 0 ];then
 	paths=`cat $tmounts|
-		egrep -v " ro |,bind| nfsd| nfs |gvfsd-fuse"|
+		egrep -v " ro |,bind| nfsd| nfs |gvfsd-fuse| sys "|
 			awk '{print $2" "}'
 	`
 fi
