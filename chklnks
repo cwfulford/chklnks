@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: chklnks,v 1.130 2016/04/25 12:42:05 fulford Exp fulford $
+# $Id: chklnks,v 1.131 2016/04/25 12:43:22 fulford Exp fulford $
 # $Source: /src/merlin/usr/local/etc/RCS/chklnks,v $
-# $Revision: 1.130 $
+# $Revision: 1.131 $
 # Author C W Fulford.
 # Copyright 2014 (c) C W Fulford.
 # Licensed for public use under the LGPL, .
@@ -16,7 +16,7 @@ while [ $# -gt 0 ] ;do
 		-h) hostid=$2;shift 2;;
 		-r) action=delete;shift;;
 		-v) verbose=0;shift;;
-		-V) echo "$cmd $Revision: 1.130 $ $Date: 2016/04/25 12:42:05 $"|awk '{print $1,$3,$6}';exit;;  
+		-V) echo "$cmd $Revision: 1.131 $ $Date: 2016/04/25 12:43:22 $"|awk '{print $1,$3,$6}';exit;;  
 		 /*) paths="$paths $1";shift;;
 	 	*) echo "$syntax" >&2;exit;;
 	esac
@@ -59,7 +59,7 @@ for d in $paths;do
 		echo "$cmd: checking directory $d"
 	fi
 	$rchk sudo find -L $d -xdev -type l -print >>$targets
-	while read f <$targets ;do   
+	cat $targets |while read f ;do   
 		if [ $action == "delete" ] ;then
 			$rchk "sudo rm $f" 
 			if [ $? -eq 0 -a $verbose ];then
