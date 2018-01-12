@@ -1,10 +1,15 @@
-.TH CHKLNKS 8l "28 May r1.136
+.TH CHKLNKS 8l "28 May r1.137
 .SH NAME
 .B chklnks
 - locates and optionally removes broken symbolic links.
 .SH SYNOPSIS
-\fBchklnks\fR [\fB-a\fR] [\fB-d\fR] [\fB-h \fI<hostid|>\fR] [\fB-r\fR]
-[\fB-V\fR] [\fB-v\fR] [\fI<directory> ...\fR]
+\fBchklnks\fR 
+[[[\fB-a\fR]| [\fI<directory> ...\fR]]
+[\fB-d\fR]
+[\fB-h \fI<hostid|>\fR]
+[\fB-r\fR]
+[\fB-v\fR]]|
+[\fB-V\fR] 
 .SH AVAILABILITY
 .B chklnks
 is a Bourne shell script which should work equally well on all versions of UNIX
